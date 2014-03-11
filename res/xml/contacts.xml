@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContactsAccountType xmlns:android="http://schemas.android.com/apk/res/android" >
+<ContactsSource xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <EditSchema>
         <DataKind
@@ -83,4 +83,4 @@
         <DataKind kind="sip_address" maxOccurs="1" />
     </EditSchema>
 
-</ContactsAccountType>
+</ContactsSource>
