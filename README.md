@@ -1,5 +1,7 @@
+CardDroid is an ugly backport of DavDroid for Android 2.3.3.
+This version don't support calendar. Only carddav is supported.
 
-Please see the [DAVdroid Web site](http://davdroid.bitfire.at).
+If you have a 4+ device, use [DAVdroid](http://davdroid.bitfire.at) instead
 
 
 USED THIRD-PARTY LIBRARIES
