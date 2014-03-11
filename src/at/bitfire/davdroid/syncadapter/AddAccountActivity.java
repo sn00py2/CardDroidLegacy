@@ -10,17 +10,17 @@
  ******************************************************************************/
 package at.bitfire.davdroid.syncadapter;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import at.bitfire.davdroid.Constants;
 import at.bitfire.davdroid.R;
 
-public class AddAccountActivity extends Activity {
+public class AddAccountActivity extends FragmentActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class AddAccountActivity extends Activity {
 		setContentView(R.layout.add_account);
 		
 		if (savedInstanceState == null) {	// first call
-			getFragmentManager().beginTransaction()
+			getSupportFragmentManager().beginTransaction()
 				.add(R.id.fragment_container, new EnterCredentialsFragment(), "enter_credentials")
 				.commit();
 		}

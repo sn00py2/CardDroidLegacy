@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">DAVdroid</string>
+    <string name="menu_settings">Settings</string>
 
+    <string-array name="http_protocols">
+        <item>http://</item>
+        <item>https://</item>
+    </string-array>
+    
     <string name="http_warning">Ohne Verschlüsselung (HTTPS) können Ihre Zugangsdaten, Kontakte und Termine leicht abgefangen werden.</string>
     <string name="user_name">Benutzername:</string>
     <string name="password">Passwort:</string>

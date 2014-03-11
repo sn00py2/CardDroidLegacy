@@ -24,12 +24,10 @@ import org.apache.http.conn.scheme.LayeredSocketFactory;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.params.HttpParams;
 
-import android.annotation.TargetApi;
 import android.net.SSLCertificateSocketFactory;
-import android.os.Build;
 import android.util.Log;
 
-@TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+//SNP:TODO @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
 public class TlsSniSocketFactory implements LayeredSocketFactory {
 	private static final String TAG = "davdroid.SNISocketFactory";
 	
@@ -70,10 +68,11 @@ public class TlsSniSocketFactory implements LayeredSocketFactory {
 		SSLSocket ssl = (SSLSocket)sslSocketFactory.createSocket(InetAddress.getByName(host), port);
 		
 		// set up SNI before the handshake
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-			Log.d(TAG, "Setting SNI hostname");
-			sslSocketFactory.setHostname(ssl, host);
-		} else
+		//SNP:TODO
+//		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+//			Log.d(TAG, "Setting SNI hostname");
+//			sslSocketFactory.setHostname(ssl, host);
+//		} else
 			Log.i(TAG, "No SNI support below Android 4.2!");
 		
 		// verify hostname and certificate

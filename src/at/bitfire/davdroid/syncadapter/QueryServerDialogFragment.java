@@ -18,12 +18,12 @@ import java.util.List;
 
 import org.apache.http.HttpException;
 
-import android.app.DialogFragment;
-import android.app.LoaderManager.LoaderCallbacks;
-import android.content.AsyncTaskLoader;
 import android.content.Context;
-import android.content.Loader;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.LoaderManager.LoaderCallbacks;
+import android.support.v4.content.AsyncTaskLoader;
+import android.support.v4.content.Loader;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,8 +31,8 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import at.bitfire.davdroid.R;
-import at.bitfire.davdroid.webdav.HttpPropfind.Mode;
 import at.bitfire.davdroid.webdav.DavIncapableException;
+import at.bitfire.davdroid.webdav.HttpPropfind.Mode;
 import at.bitfire.davdroid.webdav.WebDavResource;
 
 public class QueryServerDialogFragment extends DialogFragment implements LoaderCallbacks<ServerInfo> {
@@ -48,7 +48,7 @@ public class QueryServerDialogFragment extends DialogFragment implements LoaderC
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setStyle(DialogFragment.STYLE_NO_TITLE, android.R.style.Theme_Holo_Light_Dialog);
+		setStyle(DialogFragment.STYLE_NO_TITLE, android.R.style.Theme_Light);
 		setCancelable(false);
 
 		Loader<ServerInfo> loader = getLoaderManager().initLoader(0, getArguments(), this);

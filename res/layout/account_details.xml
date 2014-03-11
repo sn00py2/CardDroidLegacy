@@ -4,47 +4,48 @@
     android:layout_height="fill_parent"
     android:scrollbars="vertical" >
 
-    <GridLayout
+    <android.support.v7.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:columnCount="2"
+        app:columnCount="2"
         android:padding="10dp"
-        android:useDefaultMargins="true" >
+        app:useDefaultMargins="true" >
 
         <TextView
-            android:layout_columnSpan="2"
-            android:layout_gravity="left"
+            app:layout_columnSpan="2"
+            app:layout_gravity="left"
             android:layout_marginBottom="20dp"
             android:text="@string/account_details"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
-            android:layout_gravity="left"
+            app:layout_gravity="left"
             android:text="@string/account_name"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
             android:id="@+id/account_name"
-            android:layout_gravity="fill_horizontal"
+            app:layout_gravity="fill_horizontal"
             android:hint="@string/account_name_hint"
             android:inputType="textEmailAddress" />
         
         <TextView
             android:id="@+id/account_name_info"
             android:layout_width="fill_parent"
-            android:layout_columnSpan="2"
-            android:layout_gravity="left"
+            app:layout_columnSpan="2"
+            app:layout_gravity="left"
             android:drawableLeft="@drawable/extra_actions_about"
             android:drawablePadding="10dp"
             android:padding="10dp"
             android:text="@string/account_name_info"
             android:textAppearance="?android:attr/textAppearanceMedium" />
         
-        <Space
-            android:layout_gravity="left|top"
-            android:layout_row="3" />
+        <android.support.v7.widget.Space
+            app:layout_gravity="left|top"
+            app:layout_row="3" />
        
-    </GridLayout>
+    </android.support.v7.widget.GridLayout>
 
 </ScrollView>

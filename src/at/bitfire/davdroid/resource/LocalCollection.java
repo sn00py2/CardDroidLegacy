@@ -23,7 +23,7 @@ import android.content.OperationApplicationException;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.RemoteException;
-import android.provider.CalendarContract;
+import android.provider.ContactsContract;
 import android.util.Log;
 
 public abstract class LocalCollection<T extends Resource> {
@@ -245,7 +245,7 @@ public abstract class LocalCollection<T extends Resource> {
 		return baseURI.buildUpon()
 				.appendQueryParameter(entryColumnAccountType(), account.type)
 				.appendQueryParameter(entryColumnAccountName(), account.name)
-				.appendQueryParameter(CalendarContract.CALLER_IS_SYNCADAPTER, "true")
+				.appendQueryParameter(ContactsContract.CALLER_IS_SYNCADAPTER, "true")
 				.build();
 	}
 	

@@ -12,12 +12,10 @@ package at.bitfire.davdroid.syncadapter;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
-import android.app.Fragment;
 import android.content.ContentResolver;
 import android.os.Bundle;
-import android.os.RemoteException;
-import android.provider.CalendarContract;
 import android.provider.ContactsContract;
+import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -31,7 +29,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import at.bitfire.davdroid.Constants;
 import at.bitfire.davdroid.R;
-import at.bitfire.davdroid.resource.LocalCalendar;
 
 public class AccountDetailsFragment extends Fragment implements TextWatcher {
 	public static final String KEY_SERVER_INFO = "server_info";
@@ -81,7 +78,6 @@ public class AccountDetailsFragment extends Fragment implements TextWatcher {
 	
 	void addAccount() {
 		ServerInfo serverInfo = (ServerInfo)getArguments().getSerializable(KEY_SERVER_INFO);
-		try {
 			String accountName = editAccountName.getText().toString();
 			
 			AccountManager accountManager = AccountManager.get(getActivity());
@@ -107,24 +103,11 @@ public class AccountDetailsFragment extends Fragment implements TextWatcher {
 			
 			if (accountManager.addAccountExplicitly(account, serverInfo.getPassword(), userData)) {
 				// account created, now create calendars
-				boolean syncCalendars = false;
-				for (ServerInfo.ResourceInfo calendar : serverInfo.getCalendars())
-					if (calendar.isEnabled()) {
-						LocalCalendar.create(account, getActivity().getContentResolver(), calendar);
-						syncCalendars = true;
-					}
-				if (syncCalendars) {
-					ContentResolver.setIsSyncable(account, CalendarContract.AUTHORITY, 1);
-					ContentResolver.setSyncAutomatically(account, CalendarContract.AUTHORITY, true);
-				} else
-					ContentResolver.setIsSyncable(account, CalendarContract.AUTHORITY, 0);
+				ContentResolver.setIsSyncable(account, "com.android.calendar", 0);
 				
 				getActivity().finish();				
 			} else
 				Toast.makeText(getActivity(), "Couldn't create account (account with this name already existing?)", Toast.LENGTH_LONG).show();
-
-		} catch (RemoteException e) {
-		}
 	}
 
 	
@@ -144,7 +127,7 @@ public class AccountDetailsFragment extends Fragment implements TextWatcher {
 
 	@Override
 	public void onTextChanged(CharSequence s, int start, int before, int count) {
-		getActivity().invalidateOptionsMenu();
+		getActivity().supportInvalidateOptionsMenu();
 	}
 
 	@Override

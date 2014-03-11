@@ -47,6 +47,7 @@ import android.provider.ContactsContract.CommonDataKinds.SipAddress;
 import android.provider.ContactsContract.CommonDataKinds.StructuredName;
 import android.provider.ContactsContract.CommonDataKinds.StructuredPostal;
 import android.provider.ContactsContract.CommonDataKinds.Website;
+import android.provider.ContactsContract.Contacts;
 import android.provider.ContactsContract.Data;
 import android.provider.ContactsContract.RawContacts;
 import android.util.Log;
@@ -273,7 +274,7 @@ public class LocalAddressBook extends LocalCollection<Contact> {
 	}
 	
 	protected void populateEmailAddresses(Contact c) throws RemoteException {
-		@Cleanup Cursor cursor = providerClient.query(dataURI(), new String[] { Email.TYPE, Email.ADDRESS, Email.LABEL, Email.IS_SUPER_PRIMARY },
+		@Cleanup Cursor cursor = providerClient.query(dataURI(), new String[] { Email.TYPE, Email.DATA1, Email.LABEL, Email.IS_SUPER_PRIMARY },
 				Email.RAW_CONTACT_ID + "=? AND " + Data.MIMETYPE + "=?",
 				new String[] { String.valueOf(c.getLocalID()), Email.CONTENT_ITEM_TYPE }, null);
 		while (cursor != null && cursor.moveToNext()) {
@@ -302,7 +303,7 @@ public class LocalAddressBook extends LocalCollection<Contact> {
 	protected void populatePhoto(Contact c) throws RemoteException {
 		Uri photoUri = Uri.withAppendedPath(
 	             ContentUris.withAppendedId(RawContacts.CONTENT_URI, c.getLocalID()),
-	             RawContacts.DisplayPhoto.CONTENT_DIRECTORY);
+	             Contacts.Photo.CONTENT_DIRECTORY);
 		try {
 			@Cleanup AssetFileDescriptor fd = providerClient.openAssetFile(photoUri, "r");
 			@Cleanup InputStream is = fd.createInputStream();
@@ -681,7 +682,7 @@ public class LocalAddressBook extends LocalCollection<Contact> {
 		
 		builder = builder
 				.withValue(Data.MIMETYPE, Email.CONTENT_ITEM_TYPE)
-				.withValue(Email.ADDRESS, email.getValue())
+				.withValue(Email.DATA1, email.getValue())
 				.withValue(Email.TYPE, typeCode)
 				.withValue(Email.IS_PRIMARY, is_primary ? 1 : 0)
 				.withValue(Phone.IS_SUPER_PRIMARY, is_primary ? 1 : 0);;

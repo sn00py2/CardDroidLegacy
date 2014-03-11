@@ -10,8 +10,8 @@
  ******************************************************************************/
 package at.bitfire.davdroid.syncadapter;
 
-import android.app.ListFragment;
 import android.os.Bundle;
+import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -66,7 +66,7 @@ public class SelectCollectionsFragment extends ListFragment {
 							listView.setItemChecked(pos + 1, false);
 				}
 				
-				getActivity().invalidateOptionsMenu();
+				getActivity().supportInvalidateOptionsMenu();
 			}
 		});
 	}
@@ -119,7 +119,13 @@ public class SelectCollectionsFragment extends ListFragment {
 	public void onPrepareOptionsMenu(Menu menu) {
 		boolean ok = false;
 		try {
-			ok = getListView().getCheckedItemCount() > 0;
+			ListView listView = getListView();
+			for (int i = listView.getCount() - 1; i >= 0; i--) {
+				if (listView.isItemChecked(i)) {
+					ok = true;
+					break;
+				}
+			}
 		} catch(IllegalStateException e) {
 		}
 		MenuItem item = menu.findItem(R.id.next);
