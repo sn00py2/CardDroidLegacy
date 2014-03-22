@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <Preference android:title="@string/davdroid_help" >
+    <Preference android:title="@string/cardroid_help" >
         <intent
             android:targetPackage="at.bitfire.davdroid"
             android:targetClass="at.bitfire.davdroid.MainActivity"
