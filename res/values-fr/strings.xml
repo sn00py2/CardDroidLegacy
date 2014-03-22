@@ -43,4 +43,6 @@
     <string name="account_name_info">Utilisez votre adresse email en tant que nom de compte car Android utilise ce nom pour le champ ORGANISATEUR des évènements que vous créez."
     Vous ne pouvez pas avoir deux comptes du même nom.</string>
 
+    <string name="editContactDescription">"Modifier le contact"</string>
+    <string name="insertContactDescription">"Créer un contact"</string>
 </resources>
